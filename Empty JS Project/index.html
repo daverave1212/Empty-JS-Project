@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src = "Javascript/utils.js"></script>
+	<script src = "Javascript/scripts.js"></script>
+	<script src = "Javascript/Queue.src.js"></script>
+	<script src = "Javascript/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+<div id = "Window">
+
+
+</div>
+</body>
+<script>
+function loadJSON(filePath, callback) {   
+
+		var xobj = new XMLHttpRequest();
+			xobj.overrideMimeType("application/json");
+		xobj.open('GET', filePath, true); // Replace 'my_data' with the path to your file
+		xobj.onreadystatechange = function () {
+			console.log("State changed...");
+			  if (xobj.readyState == 4 && xobj.status == "200") {
+				// Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+				callback(xobj.responseText);}};
+		xobj.send(null);  
+	}
+
+
+loadJSON("ceva.txt", function(obj){
+	alert(obj);
+});
+</script>
+</html>
